@@ -8,6 +8,17 @@ public class Main {
         filme.incluidoNoPlano = true;
         filme.duracaoEmMinutos = 208;
 
+        filme.exibeFichaTecnica();
+
+        filme.avalia(9.30);
+        filme.avalia(8.30);
+        filme.avalia(7.30);
+
+        System.out.println(filme.somaDasAvaliacoes);
+        System.out.println(filme.totalDeAvaliacoes);
+        System.out.println(filme.pegaMedia());
+
+
     }
 
 }

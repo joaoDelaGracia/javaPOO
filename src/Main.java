@@ -1,3 +1,4 @@
+import br.com.joao.movies.calculos.CalculadoraDeTempo;
 import br.com.joao.movies.modelos.Filme;
 import br.com.joao.movies.modelos.Serie;
 
@@ -11,6 +12,14 @@ public class Main {
         filme.setIncluidoNoPlano(true);
         filme.setDuracaoEmMinutos(208);
         System.out.println("Duração do filme: " + filme.getDuracaoEmMinutos());
+
+        Filme outroFilme = new Filme();
+
+        outroFilme.setNome("Titanic");
+        outroFilme.setAno(2000);
+        outroFilme.setIncluidoNoPlano(true);
+        outroFilme.setDuracaoEmMinutos(176);
+        System.out.println("Duração do filme: " + outroFilme.getDuracaoEmMinutos());
 
         filme.exibeFichaTecnica();
 
@@ -30,6 +39,11 @@ public class Main {
         serie.setMinutosPorEpisodio(50);
         System.out.println("Duração da série: " + serie.getDuracaoEmMinutos());
 
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(filme);
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(serie);
+        System.out.println(calculadora.getTempoTotal());
     }
 
 }

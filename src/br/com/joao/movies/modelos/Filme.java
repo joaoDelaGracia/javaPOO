@@ -1,6 +1,8 @@
 package br.com.joao.movies.modelos;
 
-public class Filme extends Titulo{
+import br.com.joao.movies.interfaces.Classificavel;
+
+public class Filme extends Titulo implements Classificavel {
     private String diretor;
 
     public String getDiretor() {
@@ -10,4 +12,10 @@ public class Filme extends Titulo{
     public void setDiretor(String diretor) {
         this.diretor = diretor;
     }
+
+    @Override
+    public int getClassificacao() {
+        return (int) this.pegaMedia() / 2;
+    }
+
 }

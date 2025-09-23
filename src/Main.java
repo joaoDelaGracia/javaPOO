@@ -4,48 +4,40 @@ import br.com.joao.movies.modelos.Episodio;
 import br.com.joao.movies.modelos.Filme;
 import br.com.joao.movies.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-        Filme filme = new Filme();
+        Filme filme = new Filme("Duna 2");
 
-        filme.setNome("Duna 2");
         filme.setAno(2024);
         filme.setIncluidoNoPlano(true);
         filme.setDuracaoEmMinutos(208);
-        System.out.println("Duração do filme: " + filme.getDuracaoEmMinutos());
 
-        Filme outroFilme = new Filme();
+        Filme filme2 = new Filme("Titanic");
 
-        outroFilme.setNome("Titanic");
-        outroFilme.setAno(2000);
-        outroFilme.setIncluidoNoPlano(true);
-        outroFilme.setDuracaoEmMinutos(176);
-        System.out.println("Duração do filme: " + outroFilme.getDuracaoEmMinutos());
+        filme2.setAno(2000);
+        filme2.setIncluidoNoPlano(true);
+        filme2.setDuracaoEmMinutos(176);
 
-        filme.exibeFichaTecnica();
 
         filme.avalia(9.30);
-        filme.avalia(8.30);
-        filme.avalia(7.30);
+        filme2.avalia(8.30);
 
-        System.out.println(filme.pegaMedia());
 
         Serie serie = new Serie();
 
         serie.setNome("Lost");
         serie.setAno(2000);
-        serie.exibeFichaTecnica();
         serie.setTemporadas(10);
         serie.setEpisodiosPorTemporada(10);
         serie.setMinutosPorEpisodio(50);
-        System.out.println("Duração da série: " + serie.getDuracaoEmMinutos());
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         calculadora.inclui(filme);
-        calculadora.inclui(outroFilme);
+        calculadora.inclui(filme2);
         calculadora.inclui(serie);
-        System.out.println(calculadora.getTempoTotal());
 
         FiltroRecomendacao filtro = new FiltroRecomendacao();
 
@@ -58,6 +50,19 @@ public class Main {
         episodio.setTotalVisualizacoes(300);
 
         filtro.filtra(episodio);
+
+        Filme filme3 = new Filme("Piratas do Caribe");
+        filme3.setAno(2003);
+        filme3.setDuracaoEmMinutos(160);
+        filme3.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+
+        listaDeFilmes.add(filme);
+        listaDeFilmes.add(filme2);
+        listaDeFilmes.add(filme3);
+
+        System.out.println("Os dados que tem na lista são: " + listaDeFilmes.toString());
 
     }
 

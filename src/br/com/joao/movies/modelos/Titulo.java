@@ -1,8 +1,8 @@
 package br.com.joao.movies.modelos;
 
 public class Titulo {
-    private String nome;
-    private int ano;
+    protected String nome;
+    protected int ano;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes = 0;
     private int totalDeAvaliacoes = 0;

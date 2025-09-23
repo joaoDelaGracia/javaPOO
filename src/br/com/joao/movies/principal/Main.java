@@ -1,3 +1,5 @@
+package br.com.joao.movies.principal;
+
 import br.com.joao.movies.calculos.CalculadoraDeTempo;
 import br.com.joao.movies.calculos.FiltroRecomendacao;
 import br.com.joao.movies.modelos.Episodio;
@@ -9,15 +11,13 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        Filme filme = new Filme("Duna 2");
+        Filme filme = new Filme("Duna 2",2024);
 
-        filme.setAno(2024);
         filme.setIncluidoNoPlano(true);
         filme.setDuracaoEmMinutos(208);
 
-        Filme filme2 = new Filme("Titanic");
+        Filme filme2 = new Filme("Titanic", 2000);
 
-        filme2.setAno(2000);
         filme2.setIncluidoNoPlano(true);
         filme2.setDuracaoEmMinutos(176);
 
@@ -26,10 +26,8 @@ public class Main {
         filme2.avalia(8.30);
 
 
-        Serie serie = new Serie();
+        Serie serie = new Serie("Lost", 2000);
 
-        serie.setNome("Lost");
-        serie.setAno(2000);
         serie.setTemporadas(10);
         serie.setEpisodiosPorTemporada(10);
         serie.setMinutosPorEpisodio(50);
@@ -51,8 +49,7 @@ public class Main {
 
         filtro.filtra(episodio);
 
-        Filme filme3 = new Filme("Piratas do Caribe");
-        filme3.setAno(2003);
+        Filme filme3 = new Filme("Piratas do Caribe",2003);
         filme3.setDuracaoEmMinutos(160);
         filme3.avalia(10);
 

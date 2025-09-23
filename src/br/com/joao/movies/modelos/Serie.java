@@ -6,6 +6,10 @@ public class Serie extends Titulo{
     private boolean ativa;
     private int minutosPorEpisodio;
 
+    public Serie(String nome, int ano){
+        super(nome, ano);
+    }
+
     public int getTemporadas() {
         return temporadas;
     }
@@ -47,6 +51,11 @@ public class Serie extends Titulo{
     public void exibeFichaTecnica(){
         System.out.println("Nome do Série: " + this.nome);
         System.out.println("Ano de lançamento: " + this.ano);
+    }
+
+    @Override
+    public String toString() {
+        return  "Série: " + this.nome + " (" + this.ano + ")";
     }
 
 }

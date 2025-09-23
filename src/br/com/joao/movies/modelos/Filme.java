@@ -5,8 +5,8 @@ import br.com.joao.movies.interfaces.Classificavel;
 public class Filme extends Titulo implements Classificavel {
     private String diretor;
 
-    public Filme(String nome) {
-        this.setNome(nome);
+    public Filme(String nome, int ano) {
+        super(nome, ano);
     }
 
     public String getDiretor() {

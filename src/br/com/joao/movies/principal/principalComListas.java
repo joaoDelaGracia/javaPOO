@@ -6,6 +6,7 @@ import br.com.joao.movies.modelos.Titulo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class principalComListas {
 
@@ -47,7 +48,13 @@ public class principalComListas {
         System.out.println("Após ordenação");
         System.out.println(buscaPorArtista);
 
-        // Collections.sort(lista);
+        Collections.sort(lista);
+
+        System.out.println(lista);
+
+        lista.sort(Comparator.comparing(Titulo::getAno));
+
+        System.out.println(lista);
 
     }
 }

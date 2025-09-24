@@ -1,6 +1,6 @@
 package br.com.joao.movies.modelos;
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo> {
     protected String nome;
     protected int ano;
     private boolean incluidoNoPlano;
@@ -62,4 +62,8 @@ public class Titulo {
         return somaDasAvaliacoes/totalDeAvaliacoes;
     }
 
+    @Override
+    public int compareTo(Titulo titulo) {
+        return this.getNome().compareTo(titulo.getNome());
+    }
 }

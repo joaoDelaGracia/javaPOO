@@ -1,7 +1,11 @@
 package br.com.joao.movies.modelos;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Titulo implements Comparable<Titulo> {
+    @SerializedName("Title")
     protected String nome;
+    @SerializedName("Year")
     protected int ano;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes = 0;
@@ -11,6 +15,12 @@ public class Titulo implements Comparable<Titulo> {
     public Titulo(String nome, int ano){
         this.nome = nome;
         this.ano = ano;
+    }
+
+    public Titulo(TituloOmdb tituloOmdb){
+        this.nome = tituloOmdb.title();
+        this.ano = Integer.parseInt(tituloOmdb.year());
+        this.duracaoEmMinutos = Integer.parseInt(tituloOmdb.runtime().substring(0,2));
     }
 
     public void exibeFichaTecnica(){
@@ -65,5 +75,13 @@ public class Titulo implements Comparable<Titulo> {
     @Override
     public int compareTo(Titulo titulo) {
         return this.getNome().compareTo(titulo.getNome());
+    }
+
+    @Override
+    public String toString() {
+        return  "nome='" + nome + '\'' +
+                ", ano=" + ano +
+                ", duração em minutos=" + duracaoEmMinutos +
+                '}';
     }
 }

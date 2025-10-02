@@ -1,5 +1,6 @@
 package br.com.joao.movies.principal;
 
+import br.com.joao.movies.excecao.ErroDeConversaoDeAnoException;
 import br.com.joao.movies.modelos.Titulo;
 import br.com.joao.movies.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -8,6 +9,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -20,8 +22,8 @@ public class PrincipalComBusca {
         Scanner leitura = new Scanner(System.in);
         System.out.println("Digite um filme para busca: ");
         var busca = leitura.nextLine();
-
-        String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey=d90b226c";
+        String endereco = "http://www.omdbapi.com/?t=" + URLEncoder.encode(busca) + "&apikey=d90b226c";
+        System.out.println(endereco);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -41,9 +43,16 @@ public class PrincipalComBusca {
                 .create();
         TituloOmdb tituloOmdb = gson.fromJson(json, TituloOmdb.class);
         System.out.println(tituloOmdb);
-        Titulo titulo = new Titulo(tituloOmdb);
-        System.out.println("Título já convertido");
-        System.out.println(titulo);
+
+        try {
+            Titulo titulo = new Titulo(tituloOmdb);
+            System.out.println("Título já convertido");
+            System.out.println(titulo);
+        } catch(ErroDeConversaoDeAnoException e){
+            System.out.println("Aconteceu um erro: ");
+            System.out.println(e.getMessage());
+        }
+
 
 
     }

@@ -1,11 +1,10 @@
 package br.com.joao.movies.modelos;
 
+import br.com.joao.movies.excecao.ErroDeConversaoDeAnoException;
 import com.google.gson.annotations.SerializedName;
 
 public class Titulo implements Comparable<Titulo> {
-    @SerializedName("Title")
     protected String nome;
-    @SerializedName("Year")
     protected int ano;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes = 0;
@@ -19,6 +18,12 @@ public class Titulo implements Comparable<Titulo> {
 
     public Titulo(TituloOmdb tituloOmdb){
         this.nome = tituloOmdb.title();
+
+        if(tituloOmdb.year().length() > 4) {
+            throw new ErroDeConversaoDeAnoException("Não é possível converter o ano " +
+                    "porque tem mais de 04 caracteres.");
+        }
+
         this.ano = Integer.parseInt(tituloOmdb.year());
         this.duracaoEmMinutos = Integer.parseInt(tituloOmdb.runtime().substring(0,2));
     }
